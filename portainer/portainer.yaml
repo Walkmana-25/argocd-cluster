@@ -31,7 +31,7 @@ metadata:
     app.kubernetes.io/version: "ce-latest-ee-2.19.0"
 spec:
   accessModes:
-    - "ReadWriteOnce"
+    - "ReadWriteMany"
   resources:
     requests:
       storage: "10Gi"
