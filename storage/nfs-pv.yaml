@@ -13,3 +13,41 @@ spec:
   nfs:
     server: 192.168.0.10
     path: /mnt/data/@nfs
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-class: slow
+  labels:
+    app.kubernetes.io/instance: storage
+  name: pv0002
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 30Gi
+  nfs:
+    path: /mnt/data/@nfs
+    server: 192.168.0.10
+  persistentVolumeReclaimPolicy: Recycle
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-class: slow
+  labels:
+    app.kubernetes.io/instance: storage
+  name: pv0003
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 30Gi
+  nfs:
+    path: /mnt/data/@nfs
+    server: 192.168.0.10
+  persistentVolumeReclaimPolicy: Recycle
