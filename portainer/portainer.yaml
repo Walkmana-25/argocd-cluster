@@ -23,7 +23,7 @@ metadata:
   name: portainer
   namespace: portainer
   annotations:
-    volume.alpha.kubernetes.io/storage-class: "slow"
+    volume.beta.kubernetes.io/storage-class: nfs-storage-class
   labels:
     io.portainer.kubernetes.application.stack: portainer
     app.kubernetes.io/name: portainer
