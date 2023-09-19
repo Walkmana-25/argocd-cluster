@@ -141,6 +141,10 @@ spec:
             - kube-system
             topologyKey: kubernetes.io/hostname
       containers:
+        command:
+          - /metrics-server
+          - --kubelet-insecure-tls
+          - --kubelet-preferred-address-types=InternalIP
       - args:
         - --cert-dir=/tmp
         - --secure-port=4443
