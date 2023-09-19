@@ -100,7 +100,6 @@ metadata:
     app.kubernetes.io/instance: portainer
     app.kubernetes.io/version: "ce-latest-ee-2.19.0"
 spec:
-  replicas: 2
   strategy:
     type: "Recreate"
   selector:
