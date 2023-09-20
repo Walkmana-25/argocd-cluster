@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: grafana
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 
   labels:
-    name: prometheus
+    name: grafana
 
 spec:
   destination:
@@ -21,7 +21,7 @@ spec:
 
     helm:
       valueFiles:
-        - prometheus.yaml
+        - grafana.yaml
 
   syncPolicy:
     syncOptions:
