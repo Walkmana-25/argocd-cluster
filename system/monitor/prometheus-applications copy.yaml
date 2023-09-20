@@ -16,7 +16,7 @@ spec:
   project: default
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    #targetRevision: 2.47.0
+    targetRevision: 8.19.0
     chart: kube-prometheus
 
     helm:
