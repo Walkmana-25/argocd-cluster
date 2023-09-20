@@ -11,12 +11,12 @@ metadata:
 
 spec:
   destination:
-    #namespace: prometheus
+    namespace: monitor
     server: "https://kubernetes.default.svc"
   project: default
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 2.47.0
+    #targetRevision: 2.47.0
     chart: kube-prometheus
 
     helm:
