@@ -11,7 +11,7 @@ metadata:
 
 spec:
   destination:
-    namespace: grafana
+    #namespace: grafana
     server: "https://kubernetes.default.svc"
   project: default
   source:
