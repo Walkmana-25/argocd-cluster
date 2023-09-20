@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: portainer
+  name: metrics-server
 spec:
   project: default
   source:
     repoURL: https://github.com/Walkmana-25/argocd-cluster
     targetRevision: main
-    path: system/portainer
+    path: system/metrics-server
   destination:
-    namespace: portainer
+    namespace: kube-system
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
