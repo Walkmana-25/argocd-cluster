@@ -15,16 +15,18 @@ spec:
     server: "https://kubernetes.default.svc"
   project: default
   source:
-    - repoURL: https://charts.bitnami.com/bitnami
-        targetRevision: 9.2.1
-        chart: grafana
+    - repoURL: "https://charts.bitnami.com/bitnami"
+      targetRevision: 9.2.1
+      chart: grafana
 
-        helm:
-          valueFiles:
-            - $values/system/monitor/grafana.yaml
-    - repoURL: https://github.com/Walkmana-25/argocd-cluster
-        targetRevision: main
-        ref: values
+      helm:
+        valueFiles:
+        - $values/system/monitor/grafana.yaml
+
+
+    - repoURL: "https://github.com/Walkmana-25/argocd-cluster"
+      targetRevision: main
+      ref: values
 
   syncPolicy:
     syncOptions:
