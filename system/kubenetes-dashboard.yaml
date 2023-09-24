@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubenetes-dashboard
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+  labels:
+    name: kubernetes-dashboard
+
+spec:
+  destination:
+    namespace: kubenetes-dashboard
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    - repoURL: "https://kubernetes.github.io/dashboard/"
+      targetRevision: 7.0.0-alpha1
+      chart: kubernetes-dashboard
+
+      helm:
+        parameters:
+        - name: "nginx.controller.service.type"
+          value: LoadBalancer
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
