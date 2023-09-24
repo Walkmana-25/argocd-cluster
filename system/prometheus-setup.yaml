@@ -1,15 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monitor
+  name: prometheus
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/Walkmana-25/argocd-cluster
+    repoURL: https://github.com/prometheus-operator/kube-prometheus
     targetRevision: main
-    path: system/monitor
+    path: manifests/setup
   destination:
-    namespace: argocd
+    namespace: monitor
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
