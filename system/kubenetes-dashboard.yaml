@@ -15,14 +15,14 @@ spec:
     server: "https://kubernetes.default.svc"
   project: default
   source:
-    - repoURL: "https://kubernetes.github.io/dashboard/"
-      targetRevision: 6.0.8
-      chart: kubernetes-dashboard
+    repoURL: "https://kubernetes.github.io/dashboard/"
+    targetRevision: 6.0.8
+    chart: kubernetes-dashboard
 
-      helm:
-        parameters:
-        - name: "nginx.controller.service.type"
-          value: LoadBalancer
+    helm:
+      parameters:
+      - name: "nginx.controller.service.type"
+        value: LoadBalancer
 
   syncPolicy:
     syncOptions:
