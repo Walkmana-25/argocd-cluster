@@ -20,6 +20,7 @@ spec:
     chart: kubernetes-dashboard
 
     helm:
+      releaseName: kubernetes-dashboard
       parameters:
       - name: "nginx.controller.service.type"
         value: LoadBalancer
