@@ -11,14 +11,17 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 sudo ./get_helm.sh
 
-#install cni flannel
-# Needs manual creation of namespace to avoid helm error
-kubectl create ns kube-flannel
-kubectl label --overwrite ns kube-flannel pod-security.kubernetes.io/enforce=privileged
+#install calicoctl
+curl -L https://github.com/projectcalico/calico/releases/download/v3.26.1/calicoctl-linux-amd64 -o calicoctl
+chmod +x ./calicoctl
+sudo mv ./calicoctl /usr/local/bin/calicoctl
 
-helm repo add flannel https://flannel-io.github.io/flannel/
-helm repo update
-helm install flannel --set podCidr="10.244.0.0/16" --namespace kube-flannel flannel/flannel
+
+#install calico
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/custom-resources.yaml
+
+calicoctl create -f https://github.com/Walkmana-25/argocd-cluster/raw/main/bootstrap/calico.yaml
 
 #install metallb
 helm repo add metallb https://metallb.github.io/metallb
