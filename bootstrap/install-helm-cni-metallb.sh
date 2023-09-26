@@ -16,15 +16,8 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 sudo ./get_helm.sh
 
-#install calicoctl
-curl -L https://github.com/projectcalico/calico/releases/download/v3.26.1/calicoctl-linux-amd64 -o calicoctl
-chmod +x ./calicoctl
-sudo mv ./calicoctl /usr/local/bin/calicoctl
-
-
-#install calico
-kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/master/manifests/calico.yaml
-calicoctl create -f https://github.com/Walkmana-25/argocd-cluster/raw/main/bootstrap/calico.yaml
+#install flannel
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 #install metallb
 helm repo add metallb https://metallb.github.io/metallb
