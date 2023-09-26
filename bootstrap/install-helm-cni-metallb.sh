@@ -33,6 +33,7 @@ helm repo add metallb https://metallb.github.io/metallb
 helm install metallb metallb/metallb
 
 kubectl apply -f https://github.com/Walkmana-25/argocd-cluster/raw/main/bootstrap/metallb.yaml
+calicoctl patch BGPConfig default --patch '{"spec": {"serviceLoadBalancerIPs": [{"cidr": "10.11.0.0/16"},{"cidr":"10.1.5.0/24"}]}}'
 
 
 #argocd

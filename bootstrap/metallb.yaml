@@ -6,3 +6,4 @@ metadata:
 spec:
   addresses:
   - 10.11.0.0/16
+  - 10.1.5.0/24
