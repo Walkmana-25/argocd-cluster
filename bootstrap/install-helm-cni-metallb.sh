@@ -19,6 +19,13 @@ sudo ./get_helm.sh
 #install calico
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/custom-resources.yaml
+curl -L https://github.com/projectcalico/calico/releases/download/v3.26.1/calicoctl-linux-amd64 -o calicoctl
+chmod +x ./calicoctl
+sudo mv ./calicoctl /usr/local/bin/calicoctl
+
+wget https://github.com/Walkmana-25/argocd-cluster/raw/main/bootstrap/calico.yaml
+calicoctl create -f calico.yaml
+rm calico.yaml
 
 
 #install metallb
