@@ -2,7 +2,7 @@ apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: ip-address-pool
-  namespace: metallb-system
+  namespace: default
 spec:
   addresses:
   - 10.11.0.0/16
