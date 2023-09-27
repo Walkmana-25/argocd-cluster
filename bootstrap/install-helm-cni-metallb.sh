@@ -36,8 +36,6 @@ kubectl apply -f https://github.com/Walkmana-25/argocd-cluster/raw/main/bootstra
 calicoctl patch BGPConfig default --patch '{"spec": {"serviceLoadBalancerIPs": [{"cidr": "10.11.0.0/16"},{"cidr":"10.1.5.0/24"}]}}'
 
 
-#argocd
-helm repo add argo https://argoproj.github.io/argo-helm
-helm repo update
-helm install my-argo-cd argo/argo-cd --version 5.46.7 --set server.service.type=LoadBalancer
-
+#install flux
+curl -s https://fluxcd.io/install.sh | sudo bash
+flux bootstrap github --owner=${GITHUB_USER} --repository=${GITHUB_REPO} --branch=main --personal --path=clusters/production
